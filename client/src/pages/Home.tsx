@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ArrowRight, BarChart3, Search, FileText, MessageSquare, BrainCircuit, Users, Clock, Target } from "lucide-react";
+import { CheckCircle2, FileText, Search, MessageSquare, BarChart3, BrainCircuit, Users, Clock, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
@@ -20,7 +20,7 @@ const seminar = {
   subtitle: "～非コア業務をAIで自動化し、顧客に向き合う～",
   date: "2026年2月3日(火)",
   time: "14:00～15:00",
-  description: "見積作成・提案資料・顧客分析...その事務作業、AIなら一瞬です。SaaS営業を「本来の仕事」に集中させる具体的メソッドを解説！"
+  description: "見積作成・提案資料・顧客分析...その事務作業、AIなら一瞬です。営業マンを「本来の仕事」に集中させる具体的メソッドを解説！"
 };
 
 export default function Home() {
@@ -164,7 +164,6 @@ export default function Home() {
                 onClick={() => document.getElementById('registration-form')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 今すぐ申し込む（無料）
-                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
           </motion.div>
@@ -230,18 +229,14 @@ export default function Home() {
             className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12"
           >
             {[
-              { icon: FileText, title: "見積作成に時間がかかる", desc: "プラン別料金、ユーザー数、オプション機能の組み合わせで見積作成に時間がかかる" },
-              { icon: Search, title: "商談準備が大変", desc: "顧客企業の情報収集、競合分析、業界トレンド調査に時間を取られる" },
+              { icon: FileText, title: "見積作成に時間がかかる", desc: "プラン別料金、ユーザー数、オプション機能の組み合わせで見積作成に30分以上かかっている" },
+              { icon: Search, title: "商談準備が大変", desc: "顧客企業の情報収集、競合分析、業界トレンド調査に時間を取られている" },
               { icon: MessageSquare, title: "提案資料作成が属人化", desc: "提案資料の作成方法が担当者によってバラバラで、品質が安定しない" },
-              { icon: BarChart3, title: "フォローアップに追われる", desc: "商談後のメール作成や議事録作成に時間を取られ、次の商談準備が不足" }
+              { icon: BarChart3, title: "顧客対応に追われる", desc: "資料作成に時間を取られ、顧客対応の時間が不足している" }
             ].map((item, index) => (
               <motion.div
                 key={index}
                 variants={fadeIn}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
                 className="flex gap-6 p-6 bg-white rounded-xl border-2 border-slate-200 hover:border-cyan-500 transition-colors shadow-sm hover:shadow-md"
               >
                 <div className="flex-shrink-0">
@@ -256,6 +251,14 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+
+          <div className="text-center">
+            <div className="inline-block px-8 py-4 bg-slate-900 text-white rounded-lg">
+              <p className="text-lg">
+                その課題、<span className="text-cyan-400 font-bold">Gemini</span>で解決できます。
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -263,7 +266,8 @@ export default function Home() {
       <section className="py-20 bg-slate-50">
         <div className="container px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">このセミナーで学べること</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">本セミナーで学べること</h2>
+            <p className="text-lg text-slate-600 mt-4">SaaS営業の現場で実際に使える、4つの実践スキルを習得できます。</p>
             <div className="w-20 h-1 bg-cyan-600 mx-auto mt-6" />
           </div>
 
@@ -272,26 +276,53 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+            className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
           >
             {[
-              { icon: FileText, title: "見積書の自動生成", desc: "プラン情報とユーザー数を入力するだけで、適切な見積書を自動生成。料金計算ミスを防ぎ、作成時間を90%削減。" },
-              { icon: Search, title: "商談前の企業分析", desc: "顧客企業のWebサイト、ニュース、業界動向を自動収集・分析。商談前の準備時間を70%短縮。" },
-              { icon: MessageSquare, title: "提案資料の自動作成", desc: "顧客の課題とSaaS製品の機能を組み合わせて、最適な提案資料を自動生成。品質の標準化を実現。" },
-              { icon: BarChart3, title: "商談後のフォローアップ自動化", desc: "商談内容から議事録とフォローメールを自動生成。営業マンの事務作業時間を80%削減。" },
-              { icon: BrainCircuit, title: "顧客質問への即座回答", desc: "製品マニュアルやFAQから適切な回答を自動検索。顧客対応のスピードと品質を向上。" },
-              { icon: Users, title: "競合分析レポート作成", desc: "競合SaaS製品の機能、価格、評判を自動収集・分析。差別化ポイントを明確化。" }
+              { 
+                icon: Search, 
+                title: "商談前の企業分析", 
+                subtitle: "顧客企業のWebサイト、ニュース、業界動向を自動収集・分析",
+                desc: "顧客企業の基本情報、最近のニュース、業界トレンドなど、商談前に必要な情報を一元的に収集・整理する方法を学びます。",
+                benefit: "商談前の準備時間を70%削減し、より深い顧客理解を実現します"
+              },
+              { 
+                icon: FileText, 
+                title: "提案資料の自動生成", 
+                subtitle: "顧客の課題とSaaS製品の機能を組み合わせて最適な提案資料を作成",
+                desc: "顧客情報と製品データを組み合わせて、説得力のある提案資料を自動生成。営業担当者は戦略立案に集中できます。",
+                benefit: "提案書作成時間を70%削減し、商談準備の質を向上させます"
+              },
+              { 
+                icon: MessageSquare, 
+                title: "商談後のフォローアップ自動化", 
+                subtitle: "商談内容から議事録とフォローメールを自動生成",
+                desc: "商談の議事録作成、フォローアップメールの作成、次回アクションの整理など、商談後の事務作業を自動化する方法を習得します。",
+                benefit: "営業マンの事務作業時間を80%削減し、次の商談準備に集中できます"
+              },
+              { 
+                icon: BrainCircuit, 
+                title: "顧客質問への即座回答", 
+                subtitle: "製品マニュアルやFAQから適切な回答を自動検索",
+                desc: "製品仕様、価格体系、機能詳細など、顧客からの技術的な質問に対して、社内ナレッジベースから適切な回答を瞬時に検索・提示する方法を学びます。",
+                benefit: "顧客からの技術的な質問に即座に対応できるようになります"
+              }
             ].map((item, index) => (
               <motion.div
                 key={index}
                 variants={fadeIn}
-                className="bg-white p-6 rounded-xl border-2 border-slate-200 hover:border-cyan-500 transition-colors shadow-sm hover:shadow-md"
+                className="bg-white p-8 rounded-xl border-2 border-slate-200 hover:border-cyan-500 transition-colors shadow-sm hover:shadow-md"
               >
-                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-cyan-100 to-blue-100 text-cyan-600 mb-4">
-                  <item.icon className="h-6 w-6" />
+                <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 text-white mb-6">
+                  <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-600 mb-4">{item.subtitle}</p>
+                <p className="text-slate-700 text-sm leading-relaxed mb-4">{item.desc}</p>
+                <div className="flex items-start gap-2 text-sm text-cyan-700">
+                  <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                  <span>{item.benefit}</span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -310,43 +341,43 @@ export default function Home() {
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="border-2 border-slate-200 rounded-lg px-6 hover:border-cyan-500 transition-colors">
                 <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-cyan-600">
-                  SaaS業界の営業経験が浅くても参加できますか？
+                  AIの知識がなくても参加できますか？
                 </AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed">
-                  はい、問題ありません。基本的な業務フローから丁寧に解説しますので、SaaS営業の経験が浅い方でも安心してご参加いただけます。
+                  はい、問題ありません。プログラミング不要で使える方法を中心に解説します。営業担当者が明日から使える実践的な内容です。
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border-2 border-slate-200 rounded-lg px-6 hover:border-cyan-500 transition-colors">
                 <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-cyan-600">
-                  自社のSaaS製品に合わせたカスタマイズは可能ですか？
+                  途中参加・途中退出は可能ですか？
                 </AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed">
-                  セミナーでは汎用的な手法を解説しますが、個別のご相談も承ります。セミナー後に具体的な導入支援も可能です。
+                  はい、可能です。ただし、実践的な内容が多いため、できるだけ最初からご参加いただくことをおすすめします。
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border-2 border-slate-200 rounded-lg px-6 hover:border-cyan-500 transition-colors">
                 <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-cyan-600">
-                  Geminiの利用料金はどのくらいかかりますか？
+                  資料は配布されますか？
                 </AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed">
-                  Geminiは無料プランから利用可能です。セミナーでは無料プランでも実現できる活用方法を中心に解説します。
+                  はい、セミナー後に参加者の方へ資料をメールでお送りします。
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border-2 border-slate-200 rounded-lg px-6 hover:border-cyan-500 transition-colors">
                 <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-cyan-600">
-                  技術的な知識がなくても使えますか？
+                  複数名での参加は可能ですか？
                 </AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed">
-                  はい、プログラミング不要で使える方法を中心に解説します。営業担当者が明日から使える実践的な内容です。
+                  はい、可能です。お一人ずつ申し込みフォームからご登録ください。
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-5" className="border-2 border-slate-200 rounded-lg px-6 hover:border-cyan-500 transition-colors">
                 <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-cyan-600">
-                  録画配信はありますか？
+                  録画視聴は可能ですか？
                 </AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed">
                   はい、参加者の方には後日録画URLをお送りします。当日参加できない場合でも、後から視聴いただけます。
@@ -357,11 +388,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why This Seminar Section */}
+      {/* Why Free Section */}
       <section className="py-20 bg-gradient-to-br from-cyan-50 to-blue-50">
         <div className="container px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center">なぜこのセミナーを開催するのか</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center">なぜ"無料"で実施するのか</h2>
             <div className="text-left space-y-6 text-slate-700 leading-relaxed text-lg">
               <p>
                 私たちは、AIを活用することで業務改善が実際に進むということを、<br />
@@ -404,15 +435,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-5 w-5 text-cyan-600 flex-shrink-0 mt-0.5" />
-                    <span>インサイドセールス・フィールドセールス担当者</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-cyan-600 flex-shrink-0 mt-0.5" />
                     <span>営業企画・管理職の方</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-cyan-600 flex-shrink-0 mt-0.5" />
-                    <span>カスタマーサクセス担当者</span>
                   </li>
                 </ul>
               </CardContent>
@@ -476,39 +499,6 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section Before Form */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-cyan-500" />
-          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-cyan-500" />
-        </div>
-        
-        <div className="container px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              営業のやり方、<br />
-              そろそろアップデートしませんか？
-            </h2>
-            <p className="text-xl text-slate-300 mb-8">
-              Geminiで変わる"次世代のSaaS営業"を体験してください。
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
-              onClick={() => document.getElementById('registration-form')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              今すぐ申し込む（無料）
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </motion.div>
         </div>
       </section>
 
@@ -632,7 +622,7 @@ export default function Home() {
                   </Button>
 
                   <div className="text-center text-sm text-slate-600 space-y-1">
-                    <p>※ セミナーに関して、事前にご連絡させていただく場合がございます。</p>
+                    <p>※ 研修に関して、事前にご連絡させていただく場合がございます。</p>
                     <p>※ 同業他社様のご参加はお断りする場合がございます。</p>
                   </div>
                 </form>
