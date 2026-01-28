@@ -294,29 +294,25 @@ export default function Home() {
                 icon: Search, 
                 title: "AIによるリードスコアリング", 
                 subtitle: "企業情報とウェブ行動データを自動分析し、優先順位を可視化",
-                desc: "企業規模、業種、ウェブサイトでの行動履歴などを自動分析し、成約可能性が高い見込み客を特定する方法を学びます。手作業での分析時間を大幅に削減できます。",
-                benefit: "リード選定時間を70%削減し、成約率の高い見込み客に集中できます"
+                desc: "企業規模、業種、ウェブサイトでの行動履歴などを自動分析し、成約可能性が高い見込み客を特定する方法を学びます。手作業での分析時間を大幅に削減できます。"
               },
               { 
                 icon: FileText, 
                 title: "提案資料・デモの自動カスタマイズ", 
                 subtitle: "見込み客の業界・課題に合わせた提案資料を自動生成",
-                desc: "見込み客の業界や課題に合わせて、提案資料やデモシナリオを自動生成する方法を習得します。過去の類似案件を参照し、最適な提案内容を提示できます。",
-                benefit: "提案資料作成時間を70%削減し、商談準備の質を向上させます"
+                desc: "見込み客の業界や課題に合わせて、提案資料やデモシナリオを自動生成する方法を習得します。過去の類似案件を参照し、最適な提案内容を提示できます。"
               },
               { 
                 icon: MessageSquare, 
                 title: "商談後のフォローアップ自動化", 
                 subtitle: "議事録、CRM入力、フォローメールを自動生成",
-                desc: "商談後の議事録作成、次のアクションの整理、CRMへの入力、フォローメールの作成など、事務作業を自動化する方法を学びます。",
-                benefit: "事務作業時間を80%削減し、次の商談準備や新規開拓に集中できます"
+                desc: "商談後の議事録作成、次のアクションの整理、CRMへの入力、フォローメールの作成など、事務作業を自動化する方法を学びます。"
               },
               { 
                 icon: BrainCircuit, 
                 title: "顧客質問への即座回答", 
                 subtitle: "製品情報・導入事例を瞬時に検索し、最新情報を提供",
-                desc: "製品の機能、料金プラン、技術仕様、導入事例など、顧客からの多様な質問に対して、社内ナレッジベースから適切な回答を瞬時に検索・提示する方法を学びます。",
-                benefit: "情報収集時間を削減し、顧客からの質問に即座に対応できるようになります"
+                desc: "製品の機能、料金プラン、技術仕様、導入事例など、顧客からの多様な質問に対して、社内ナレッジベースから適切な回答を瞬時に検索・提示する方法を学びます。"
               }
             ].map((item, index) => (
               <motion.div
@@ -329,11 +325,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-sm text-slate-600 mb-4">{item.subtitle}</p>
-                <p className="text-slate-700 text-sm leading-relaxed mb-4">{item.desc}</p>
-                <div className="flex items-start gap-2 text-sm text-cyan-700">
-                  <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5" />
-                  <span>{item.benefit}</span>
-                </div>
+                <p className="text-slate-700 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
