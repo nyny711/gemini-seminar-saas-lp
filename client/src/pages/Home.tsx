@@ -16,11 +16,13 @@ import { toast } from "sonner";
 // セミナー情報の定義
 const seminar = {
   id: "vol1",
-  title: "「商談時間」を最大化する",
-  subtitle: "～非コア業務をAIで自動化し、顧客に向き合う～",
-  date: "2026年2月3日(火)",
+  title: "「売上」を最大化する",
+  subtitle: "～売上改善に直結するAI活用方法～",
+  date: "2026年2月24日(火)",
   time: "14:00～15:00",
-  description: "見積作成・提案資料・顧客分析...その事務作業、AIなら一瞬です。営業マンを「本来の仕事」に集中させる具体的メソッドを解説！"
+  speaker: "佐藤 正穂",
+  speakerTitle: "AI活用コーディネーター",
+  description: "提案資料の作成、デモの準備や商談後のフォローアップ等を自動化し、営業準備・打ち合わせ後の対応を効率的に運営できます！"
 };
 
 export default function Home() {
@@ -186,6 +188,15 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto">
+            {/* バナー画像 */}
+            <div className="mb-8">
+              <img 
+                src="/seminar-banner.png" 
+                alt="SaaS業界向けDXウェビナー 営業改革シリーズ Vol.1" 
+                className="w-full rounded-xl shadow-lg"
+              />
+            </div>
+
             <Card className="border-2 border-cyan-500 shadow-xl overflow-hidden">
               <CardContent className="p-8">
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{seminar.title}</h3>
@@ -193,18 +204,18 @@ export default function Home() {
                 <div className="flex flex-wrap gap-4 mb-6">
                   <div className="flex items-center gap-2 text-slate-700">
                     <Clock className="h-5 w-5 text-cyan-600" />
-                    <span className="font-semibold">{seminar.date}</span>
+                    <span className="font-semibold">{seminar.date} {seminar.time}</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-700">
-                    <Target className="h-5 w-5 text-cyan-600" />
-                    <span className="font-semibold">{seminar.time}</span>
+                    <Users className="h-5 w-5 text-cyan-600" />
+                    <span className="font-semibold">講師: {seminar.speaker}（{seminar.speakerTitle}）</span>
                   </div>
                 </div>
-                <p className="text-slate-700 leading-relaxed">{seminar.description}</p>
-                <div className="mt-6 p-4 bg-cyan-50 rounded-lg border border-cyan-200">
+                <p className="text-slate-700 leading-relaxed mb-6">{seminar.description}</p>
+                <div className="p-4 bg-cyan-50 rounded-lg border border-cyan-200">
                   <p className="text-sm text-slate-700">
-                    <strong className="text-cyan-700">開催形式:</strong> オンライン（Google Meet）<br />
-                    <strong className="text-cyan-700">途中参加・途中退出:</strong> OK
+                    <strong className="text-cyan-700">開催形式:</strong> オンライン開催<br />
+                    <strong className="text-cyan-700">途中参加&退出OK:</strong> お気軽にご参加いただけます
                   </p>
                 </div>
               </CardContent>
